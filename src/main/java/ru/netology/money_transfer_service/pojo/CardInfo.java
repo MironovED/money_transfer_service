@@ -1,24 +1,38 @@
 package ru.netology.money_transfer_service.pojo;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Map;
-
-//todo Добавить валидацию полей если буду успевать
+//todo Добавить валидацию полей если буду успевать - jakarta
 @Getter
 @Setter
 public class CardInfo {
     /** Номер карты, с которой осуществляется перевод */
+    @NotBlank
+    @Pattern(regexp = "\\d{16}", message = "Номер карты должен содержать ровно 16 цифр")
     private String cardFromNumber;
+
     /** Дата действия карты, с которой осуществляется перевод */
+    @NotBlank
+    @Pattern(regexp = "\\d{4}", message = "Некорректное значение даты действия карты")
     private String cardFromValidTill;
+
     /** Код CVV карты, с которой осуществляется перевод */
+    @NotBlank
+    @Pattern(regexp = "\\d{3}", message = "Код CVV должен содержать 3 цифры")
     private String cardFromCVV;
+
     /** Номер карты, на которую осуществляется перевод */
+    @NotBlank
+    @Pattern(regexp = "\\d{16}", message = "Номер карты должен содержать ровно 16 цифр")
     private String cardToNumber;
+
     /** Сумма перевода - сумма и валюта */
-    private Map<Integer, String>  amount;
+    @NotNull
+    private AmountInfo  amount;
 
     public CardInfo() {}
 
@@ -27,12 +41,23 @@ public class CardInfo {
             String cardFromValidTill,
             String cardFromCVV,
             String cardToNumber,
-            Map<Integer, String> amount
+            AmountInfo amount
             ) {
         this.cardFromNumber = cardFromNumber;
         this.cardFromValidTill = cardFromValidTill;
         this.cardFromCVV = cardFromCVV;
         this.cardToNumber = cardToNumber;
         this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "CardInfo{" +
+                "cardFromNumber='" + cardFromNumber + '\'' +
+                ", cardFromValidTill='" + cardFromValidTill + '\'' +
+                ", cardFromCVV='" + cardFromCVV + '\'' +
+                ", cardToNumber='" + cardToNumber + '\'' +
+                ", amount=" + amount.toString() +
+                '}';
     }
 }
