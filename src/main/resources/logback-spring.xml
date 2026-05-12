@@ -1,0 +1,20 @@
+<configuration>
+     пишем логи в файл logs/app.log
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/app.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
+
+<!--
+%d — время события в формате;
+%thread — имя потока, в котором произошло событие;
+%-5level — уровень логирования с выравниванием до 5 символов;
+%logger{36} — имя логгера (сокращённое до 36 символов)
+-->

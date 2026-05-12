@@ -3,11 +3,8 @@ package ru.netology.money_transfer_service.pojo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.Getter;
 import lombok.Setter;
 
-//todo Добавить валидацию полей если буду успевать - jakarta
-@Getter
 @Setter
 public class CardInfo {
     /** Номер карты, с которой осуществляется перевод */
@@ -47,6 +44,18 @@ public class CardInfo {
         this.cardFromCVV = cardFromCVV;
         this.cardToNumber = cardToNumber;
         this.amount = amount;
+    }
+
+    public String getCardFromNumber() {
+        return cardFromNumber;
+    }
+
+    public String getCardToNumber() {
+        return cardToNumber;
+    }
+
+    public AmountInfo getAmount() {
+        return amount;
     }
 
     @Override
