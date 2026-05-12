@@ -17,7 +17,6 @@ public class CardInfo {
 
     /** Дата действия карты, с которой осуществляется перевод */
     @NotBlank
-    @Pattern(regexp = "\\d{4}", message = "Некорректное значение даты действия карты")
     private String cardFromValidTill;
 
     /** Код CVV карты, с которой осуществляется перевод */
