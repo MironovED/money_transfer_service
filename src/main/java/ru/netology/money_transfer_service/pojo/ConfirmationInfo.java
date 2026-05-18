@@ -10,11 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ConfirmationInfo {
-    /** Идентификатор операции, почему то в api указан, но фронт отправляет только код
-    @NotNull
-    private String operationId;
-     */
-
     /** Код подтверждения */
     @NotNull
     private String code;
