@@ -19,7 +19,7 @@ public class ConfirmationInfo {
     @NotNull
     private String code;
 
-    private ConfirmationInfo(String code) {
+    public ConfirmationInfo(String code) {
         this.code = code;
     }
 }
